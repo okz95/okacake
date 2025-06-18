@@ -1,0 +1,5 @@
+@include('landing.layout.header')
+@include('landing.layout.navbar')
+@yield('konten')
+@include('landing.layout.footer')
+@include('landing.layout.js')
