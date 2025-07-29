@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kategori;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,14 @@ class KategoriSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Kategori::insert([
+    ['nama' => 'Bolu'],
+    ['nama' => 'Kue Kering'],
+    ['nama' => 'Kue Basah'],
+    ['nama' => 'Tart'],
+    ['nama' => 'Tradisional'],
+    ['nama' => 'Sehat'],
+    ['nama' => 'Minuman'],
+]);
     }
 }

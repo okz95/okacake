@@ -19,5 +19,13 @@ class Kue extends Model
     ];
 
     protected $dates = ['deleted_at'];
+
+    public function kategori(){
+        return $this->belongsTo(Kategori::class);
+    }
+
+    public function satuan(){
+        return $this->belongsTo(Satuan::class);
+    }
     
 }

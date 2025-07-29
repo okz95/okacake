@@ -1,0 +1,7 @@
+@include('sistem.layout.header')
+@include('sistem.layout.sidebar')
+@include('sistem.layout.navbar')
+@yield('konten')
+@include('sistem.layout.footer')
+@include('sistem.layout.js')
+@include('sistem.layout.graph')

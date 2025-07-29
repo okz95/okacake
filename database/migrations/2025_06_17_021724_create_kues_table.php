@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('kues', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('kategori_id');
-            $table->string('satuan');
+            $table->foreignId('kategori_id')->constrained('kategoris');
+            $table->foreignId('satuan_id')->constrained('satuans');
             $table->integer('harga');
             $table->integer('stok');
             $table->string('foto')->nullable();

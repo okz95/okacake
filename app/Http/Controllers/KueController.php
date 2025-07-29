@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kue;
 use Illuminate\Http\Request;
 
 class KueController extends Controller
@@ -11,7 +12,8 @@ class KueController extends Controller
      */
     public function index()
     {
-        //
+        $kue = Kue::all();
+         return view('sistem.kue.index', compact('kue'));
     }
 
     /**

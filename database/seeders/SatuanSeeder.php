@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Satuan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,12 @@ class SatuanSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Satuan::insert([
+    ['nama' => 'Gram'],
+    ['nama' => 'Kilogram'],
+    ['nama' => 'Pcs'],
+    ['nama' => 'Gelas'],
+    ['nama' => 'Porsi'],
+]);
     }
 }
