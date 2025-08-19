@@ -12,8 +12,9 @@ class Kue extends Model
 
     protected $fillable = [
         'nama',
-        'jenis',
+        'kategori_id',
         'harga',
+        'satuan_id',
         'stok',
         'foto'
     ];

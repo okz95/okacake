@@ -1,0 +1,4 @@
+@include('sistem.layout.header')
+@yield('konten')
+@include('sistem.layout.js')
+@include('sistem.layout.graph')

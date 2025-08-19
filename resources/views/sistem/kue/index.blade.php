@@ -41,7 +41,28 @@
                           @else
                               @foreach ($kue as $data)
                                   <tr>
-                                      <td></td>
+                                      <td>
+                                        <a href="#" style="margin-left : 0.1px" title="Ubah">
+                                          <span class="badge badge-primary">
+                                            <i class="fas fa-pen-square"></i>
+                                          </span>
+                                        </a>
+
+                                        <a href="#" style="margin-left : 0.1px" title="Lihat" data-bs-toggle="modal" data-bs-target="#lihat{{ $data->id }}">
+                                          <span class="badge badge-success">
+                                            <i class="far fa-eye"></i>
+                                          </span>
+                                        </a>
+                                        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#lihat{{ $data->id }}">
+                                        Launch demo modal
+                                        </button> --}}
+
+                                        <a href="#" style="margin-left : 0.1px" title="Hapus Data">
+                                          <span class="badge badge-danger">
+                                            <i class="fas fa-trash-alt"></i>
+                                          </span>
+                                        </a>
+                                      </td>
                                       <td>{{ $data->nama }}</td>
                                       <td>{{ $data->kategori->nama }}</td> 
                                       <td>{{ $data->stok }} {{ $data->satuan->nama }}</td>
@@ -54,9 +75,57 @@
                   </div>
                 </div>
               </div>
-
-
           </div>
         </div>
+         @if ($kue != NULL)
+        @foreach ($kue as $data)
+          <!-- Modal -->
+          <div class="modal fade" id="lihat{{ $data->id }}" tabindex="-1" aria-labelledby="lihatLabel{{ $data->id }}" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="lihatLabel{{ $data->id }}">Detail Kue</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="card">
+                  <div class="card-body">
+                    <table class="table table-bordered">
+                      <tr>
+                          <td colspan="2" class="text-center" style="background-color: gray;">
+                            <img 
+                            src="{{ asset($data->foto) }}" 
+                            alt="{{ $data->foto }}"
+                            height="200px">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Nama Kue</td>
+                          <td>{{ $data->nama }}</td>
+                        </tr>
+                        <tr>
+                          <td>Kategori</td>
+                          <td>{{ $data->kategori->nama }}</td>
+                        </tr>
+                        <tr>
+                          <td>Stok</td>
+                          <td>{{ $data->stok }} {{ $data->satuan->nama }}</td>
+                        </tr>
+                        <tr>
+                          <td>Harga</td>
+                          <td>{{ $data->harga }}</td>
+                        </tr>
+                    </table>
+                  </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        @endforeach
+        @endif
 @endsection
         
