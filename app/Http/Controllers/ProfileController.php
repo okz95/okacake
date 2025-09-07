@@ -6,17 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 
-class DashboardController extends Controller implements HasMiddleware
+class ProfileController extends Controller implements HasMiddleware
 {
     public static function middleware()
     {
          return [ new Middleware('role:admin')];
     }
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
-    {
-        return view('sistem.konten.dashboard');
+    
+    public function index(){
+        return view('sistem.profile.index');
     }
 }

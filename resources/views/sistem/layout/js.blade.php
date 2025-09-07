@@ -27,9 +27,6 @@
     <script src="{{ asset('sistem/assets/js/plugin/jsvectormap/jsvectormap.min.js')}}"></script>
     <script src="{{ asset('sistem/assets/js/plugin/jsvectormap/world.js')}}"></script>
 
-    <!-- Sweet Alert -->
-    <script src="{{ asset('sistem/assets/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
-
     <!-- Kaiadmin JS -->
     <script src="{{ asset('sistem/assets/js/kaiadmin.min.js')}}"></script>
 

@@ -1,6 +1,6 @@
 @extends('landing.template.home_temp')
 
-@section('judul','Home')
+@section('judul','Okacake - Home')
 
 @section('konten')
     <div>

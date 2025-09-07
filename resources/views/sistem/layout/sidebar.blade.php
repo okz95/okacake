@@ -27,19 +27,40 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a href="{{ route('dashboard') }}">
                   <i class="fas fa-home"></i>
                   <p>Dashboard</p>
-                  <span class="caret"></span>
+                  {{-- <span class="caret"></span> --}}
                 </a>
               </li>
-              <li class="nav-section">
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#profile">
+                  <i class="fas fa-user"></i>
+                  <p>Profil</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="profile">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{{ route('kue.index') }}">
+                        <span class="sub-item">Toko</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ route('profile.index') }}">
+                        <span class="sub-item">Pengguna</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              {{-- <li class="nav-section">
                 <span class="sidebar-mini-icon">
                   <i class="fa fa-ellipsis-h"></i>
                 </span>
                 <h4 class="text-section">Components</h4>
-              </li>
+              </li> --}}
               <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#base">
                   <i class="fas fa-layer-group"></i>

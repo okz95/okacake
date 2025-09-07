@@ -2,3 +2,4 @@
 @yield('konten')
 @include('sistem.layout.js')
 @include('sistem.layout.graph')
+@include('sweetalert::alert')

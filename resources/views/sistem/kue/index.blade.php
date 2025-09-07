@@ -42,25 +42,22 @@
                               @foreach ($kue as $data)
                                   <tr>
                                       <td>
-                                        <a href="#" style="margin-left : 0.1px" title="Ubah">
+                                        <a href="{{ route('kue.edit', $data ) }}" style="margin-left : 0.1px" title="Ubah" class="d-inline-block">
                                           <span class="badge badge-primary">
                                             <i class="fas fa-pen-square"></i>
                                           </span>
                                         </a>
 
-                                        <a href="#" style="margin-left : 0.1px" title="Lihat" data-bs-toggle="modal" data-bs-target="#lihat{{ $data->id }}">
+                                        <a href="#" style="margin-left : 0.1px" title="Lihat" data-bs-toggle="modal" data-bs-target="#lihat{{ $data->id }}" class="d-inline-block">
                                           <span class="badge badge-success">
                                             <i class="far fa-eye"></i>
                                           </span>
                                         </a>
-                                        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#lihat{{ $data->id }}">
-                                        Launch demo modal
-                                        </button> --}}
 
-                                        <a href="#" style="margin-left : 0.1px" title="Hapus Data">
+                                        <a href="{{ route('kue.destroy', $data->id ) }}" style="margin-left : 0.1px" title="Hapus" class="d-inline-block" data-confirm-delete="true">
                                           <span class="badge badge-danger">
-                                            <i class="fas fa-trash-alt"></i>
-                                          </span>
+                                                <i class="fas fa-trash-alt"></i>
+                                            </span>
                                         </a>
                                       </td>
                                       <td>{{ $data->nama }}</td>

@@ -5,3 +5,4 @@
 @include('sistem.layout.footer')
 @include('sistem.layout.js')
 @include('sistem.layout.graph')
+@include('sweetalert::alert')
