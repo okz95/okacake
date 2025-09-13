@@ -12,4 +12,15 @@ class DetTemp extends Model
         'jumlah',
         'bayar'
     ];
+
+    public function transaksi()
+    {
+        return $this->belongsTo(Transaksi::class);
+    }
+
+    public function kue()
+    {
+        return $this->belongsTo(Kue::class);
+    }
+    
 }

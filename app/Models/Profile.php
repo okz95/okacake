@@ -13,4 +13,9 @@ class Profile extends Model
         'no_hp',
         'foto'
    ];
+
+   public function user()
+   {
+        return $this->belongsTo(User::class);
+   }
 }

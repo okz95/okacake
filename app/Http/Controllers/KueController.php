@@ -94,7 +94,7 @@ class KueController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(KueRequest $request, string $id)
+public function update(KueRequest $request, string $id)
 {
     $kue = Kue::findOrFail($id);
 
@@ -129,7 +129,7 @@ class KueController extends Controller
         Alert::success('Sukses', 'Data selesai diubah!');
         return redirect()->route('kue.index');
     } else {
-        Alert::error('Gagal', 'Data selesai diubah!');
+        Alert::error('Gagal', 'Data gagal diubah!');
         return redirect()->back();
     }
 }

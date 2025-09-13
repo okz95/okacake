@@ -13,4 +13,19 @@ class Transaksi extends Model
         'kurir',
         'bukti_bayar'
     ];
+
+    public function detTransaksi()
+    {
+        return $this->hasMany(DetTran::class);
+    }
+
+    public function detTemp()
+    {
+        return $this->hasMany(DetTemp::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

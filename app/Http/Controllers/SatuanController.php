@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SatuanRequest;
+use App\Models\Satuan;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SatuanController extends Controller
 {
@@ -11,7 +14,13 @@ class SatuanController extends Controller
      */
     public function index()
     {
-        //
+        $satuan = Satuan::orderBy('id', 'desc')->get();
+
+        $title = 'Hapus Data';
+        $text = "Apakah Kamu yakin?";
+        confirmDelete($title, $text);
+
+         return view('sistem.satuan.index', compact('satuan'));
     }
 
     /**
@@ -19,15 +28,24 @@ class SatuanController extends Controller
      */
     public function create()
     {
-        //
+        return view('sistem.satuan.tambah');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SatuanRequest $request)
     {
-        //
+        $input = Satuan::create([
+                'nama' =>$request->nama,
+                ]);
+        if ($input) {
+            Alert::success('Sukses', 'Data selesai ditambahkan!');
+            return redirect()->route('satuan.index');
+        }else{
+            Alert::error('Gagal', 'Data gagal ditambahkan!');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -59,6 +77,13 @@ class SatuanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $satuan = Satuan::findOrFail($id);
+        if($satuan->delete()){
+            Alert::success('Sukses', 'Data berhasil dihapus!');
+                return redirect()->route('satuan.index');
+            }else{
+                Alert::error('Gagal', 'Data gagal dihapus!');
+                return redirect()->back();
+            }
     }
 }

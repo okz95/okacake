@@ -2,4 +2,5 @@
 @include('landing.layout.navbar')
 @yield('konten')
 @include('landing.layout.footer')
+@include('sweetalert::alert')
 @include('landing.layout.js')

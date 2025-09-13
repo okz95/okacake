@@ -9,7 +9,7 @@
                 <div class="card">
                   <div class="card-header d-flex justify-content-between align-items-center">
                     <h4 class="card-title mb-0">Profil Pengguna</h4>
-                    <a href="{{ route('profile.edit', 1) }}" class="btn btn-primary">
+                    <a href="{{ route('profile.edit', Auth::user()->id) }}" class="btn btn-primary">
                         <i class="fas fa-pen-square"></i>
                         Ubah</a>
                   </div>
@@ -18,18 +18,18 @@
                     <table class="table table-bordered">
                       <tr>
                         <td>Nama Lengkap</td>
-                        <td>___________</td>
+                        <td>{{ $data->nama }}</td>
                         <td rowspan="3">
-                            <img src="" alt="Foto Profil">
+                            <img src="{{ asset($data->foto) }}" alt="Foto Profil" height="150px">
                         </td>
                       </tr>
                       <tr>
                         <td>Alamat</td>
-                        <td>___________</td>
+                        <td>{{ $data->alamat }}</td>
                       </tr>
                       <tr>
                         <td>Nomor Hand Phone</td>
-                        <td>___________</td>
+                        <td>{{ $data->no_hp }}</td>
                       </tr>
                     </table>
                     </div>

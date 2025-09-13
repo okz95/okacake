@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthRequest;
+use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller implements HasMiddleware
@@ -34,6 +39,41 @@ class AuthController extends Controller implements HasMiddleware
             Alert::error('Login Gagal!', 'Username/Email atau Password salah');
             return back();
         }
+
+    }
+
+    public function register(){
+        return view('landing.konten.register');
+    }
+
+    public function register_process(AuthRequest $request){
+        
+    DB::beginTransaction();
+    try {
+        $user = User::create([
+            'username' => $request->username,
+            'email'    => $request->email,
+            'password' => Hash::make($request->password),
+            'role'     => 'customer',
+        ]);
+
+        Profile::create([
+            'nama'    => $request->nama,
+            'no_hp'   => $request->no_hp,
+            'alamat'  => $request->alamat,
+            'user_id' => $user->id,
+            'foto'    => 'upload/profile/default.png'
+        ]);
+
+        DB::commit();
+        Alert::success('Registrasi Berhasil!', 'Silakan login untuk melanjutkan');
+        return redirect()->route('auth.login');
+
+    } catch (\Exception $e) {
+        DB::rollBack();
+        Alert::error('Registrasi Gagal!', 'Silakan coba lagi');
+        return redirect()->route('auth.register');
+    }
 
     }
 

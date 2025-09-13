@@ -11,7 +11,7 @@
     <div class="card w-100">
       <div class="card-header">
         <div class="card-title mb-2">Ubah Data Kue</div>
-        <a href="{{ url()->previous() }}">
+        <a href="#" onclick="history.back()">
           <button class="badge badge-secondary" type="button">kembali</button>
         </a>
       </div>
