@@ -43,7 +43,7 @@
                 <div class="collapse" id="profile">
                   <ul class="nav nav-collapse">
                     <li>
-                      <a href="{{ route('kue.index') }}">
+                      <a href="{{ route('toko.index') }}">
                         <span class="sub-item">Toko</span>
                       </a>
                     </li>
@@ -82,6 +82,35 @@
                     <li>
                       <a href="{{ route('satuan.index') }}">
                         <span class="sub-item">Satuan</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('transaksi.index') }}">
+                  <i class="fas fa-cart-arrow-down"></i>
+                  <p>Pemesanan</p>
+                  {{-- <span class="badge badge-success">{{ $transaksi->count() }}</span> --}}
+                  {{-- <span class="caret"></span> --}}
+                </a>
+              </li>
+              <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#riw-trans">
+                  <i class="fas fa-money-check-alt"></i>
+                  <p>Riwayat Transaksi</p>
+                  <span class="caret"></span>
+                </a>
+                <div class="collapse" id="riw-trans">
+                  <ul class="nav nav-collapse">
+                    <li>
+                      <a href="{{ route('transaksi.dikirim') }}">
+                        <span class="sub-item">Transaksi Dikirim</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="{{ route('transaksi.laporan') }}">
+                        <span class="sub-item">Laporan Transaksi</span>
                       </a>
                     </li>
                   </ul>

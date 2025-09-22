@@ -34,6 +34,9 @@ class AuthController extends Controller implements HasMiddleware
         if (Auth::attempt([$login_type => $input['username'], 'password' => $input['password']], $request->filled('remember'))) {
             $request->session()->regenerate();
             Alert::success('Login Berhasil!', '');
+            if(Auth::user()->role == 'customer'){
+                return redirect()->intended(route('landing'));
+            }
             return redirect()->intended(route('dashboard')); // arahkan ke dashboard
         }else{
             Alert::error('Login Gagal!', 'Username/Email atau Password salah');
@@ -47,6 +50,13 @@ class AuthController extends Controller implements HasMiddleware
     }
 
     public function register_process(AuthRequest $request){
+
+    if($request->role === 'customer'){
+        $status = 'aktif';
+    }else{
+        $status = 'belum aktif';
+    }
+    
         
     DB::beginTransaction();
     try {
@@ -54,7 +64,8 @@ class AuthController extends Controller implements HasMiddleware
             'username' => $request->username,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
-            'role'     => 'customer',
+            'role'     => $request->role,
+            'status'   => $status
         ]);
 
         Profile::create([

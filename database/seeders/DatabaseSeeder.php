@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kurir;
 use App\Models\Profile;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
             'email' =>'okz95@gmail.com',
             'password' => Hash::make('okz95'),
             'role' => 'admin',
+            'status' => 'aktif',
         ]);
 
         Profile::create([
@@ -36,5 +38,23 @@ class DatabaseSeeder extends Seeder
             'alamat' => 'Jl. Contoh Alamat No.123, Kota Contoh, Negara Contoh',
             'foto' => 'upload/profile/default.png',
         ]);
+
+        User::create([
+            'username' => 'ykz95',
+            'email' =>'ykz95@gmail.com',
+            'password' => Hash::make('ykz95'),
+            'role' => 'kurir',
+            'status' => 'aktif',
+        ]);
+
+        Profile::create([
+            'user_id' => 2,
+            'nama' => 'Ykz95',
+            'no_hp' => '081234567890',
+            'alamat' => 'Jl. Contoh Alamat No.123, Kota Contoh, Negara Contoh',
+            'foto' => 'upload/profile/default.png',
+
+        ]);
+
     }
 }

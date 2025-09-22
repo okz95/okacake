@@ -15,6 +15,7 @@ class LandingController extends Controller
         if (Auth::check()) {
             $transaksi = Transaksi::where('user_id', Auth::id())
                 ->with('detTemp.kue')
+                ->latest()
                 ->first();
         }
         

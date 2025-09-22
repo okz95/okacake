@@ -28,18 +28,24 @@
                       </li>
                   @else
                       @foreach ($transaksi->detTemp as $item)
-                          <li class="list-group-item d-flex justify-content-between lh-sm">
-                              <div>
-                                  <h6 class="my-0">{{ $item->kue->nama }}</h6>
-                                  <span class="text-body-secondary">Rp.{{ number_format($item->kue->harga) }}</span>
-                              </div>
+                          <li class="list-group-item">
+                              <h6 class="d-flex justify-content-between align-items-center mb-3">
+                                <span>{{ $item->kue->nama }}</span>
+                                <span class="badge rounded-pill" style="background-color: #b50350">{{ $item->jumlah }}</span>
+                              </h6>
+                                  <h6 class="my-0"></h6>
+                                  <span class="text-body-secondary">Rp.{{ number_format($item->bayar) }}</span>
                           </li>
                       @endforeach
                       <li class="list-group-item d-flex justify-content-between">
                           <span>Total</span>
                           <strong>Rp.{{ number_format($transaksi->detTemp->sum('bayar')) }}</strong>
                       </li>
-                      <button class="w-100 btn btn-primary btn-lg" type="submit">Checkout Sekarang..</button>
+                      @if ($transaksi->status == 'pesan')
+                      <a class="w-100 btn btn-primary btn-lg" href="{{ route('keranjang.pesanan') }}">Checkout Sekarang..</a>
+                      @else
+                      <a class="w-100 btn btn-primary btn-lg" href="{{ route('keranjang.bayar') }}">Pesanan Anda</a>
+                      @endif
                   @endif
               @endguest
           </ul>

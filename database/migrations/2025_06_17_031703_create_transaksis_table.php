@@ -16,7 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->integer('total');
             $table->string('status');
-            $table->string('kurir');
+            $table->foreignId('kurir_id')->nullable()->constrained('users');
+            $table->string('ket')->nullable();
             $table->string('bukti_bayar');
             $table->timestamps();
         });

@@ -33,13 +33,25 @@
                                         @csrf
                                         <input type="hidden" name="kue_id" value="{{ $data->id }}">
                                         <input type="hidden" name="jumlah_beli" value="1">
+                                        @if ($transaksi)
+                                            <input type="hidden" name="transaksi_id" value="{{ $transaksi->id }}">
 
-                                        @php
-                                            // cek apakah produk ini sudah ada di detTemp
-                                            $sudahAda = $transaksi->detTemp->contains('kue_id', $data->id);
-                                        @endphp
+                                            @php
+                                                // cek apakah produk ini sudah ada di detTemp
+                                                $sudahAda = $transaksi->detTemp->contains('kue_id', $data->id);
+                                            @endphp
 
-                                        @if (!$sudahAda)
+                                            @if (!$sudahAda)
+                                                <button type="submit" class="btn btn-primary" onclick="return confirm('Masukkan produk ke dalam keranjang?');">
+                                                    <i class="fas fa-cart-plus"></i>
+                                                </button>
+                                            {{-- @else
+                                                <button type="button" class="btn btn-secondary" disabled>
+                                                    <i class="fas fa-check"></i> Sudah di keranjang
+                                                </button> --}}
+                                            @endif
+                                        @else
+                                            {{-- kalau transaksi belum ada, tombol tetap tampil --}}
                                             <button type="submit" class="btn btn-primary" onclick="return confirm('Masukkan produk ke dalam keranjang?');">
                                                 <i class="fas fa-cart-plus"></i>
                                             </button>

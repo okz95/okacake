@@ -82,6 +82,16 @@
             </div>
 
             <div class="col-md-6">
+                <label for="Daftar sebagai" class="form-label">Daftar sebagai</label>
+                <select name="role" id="role" class="form-control @error('role') is-invalid @enderror" required>
+                    <option selected disabled> -- Pilih Peran --</option>
+                    <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="customer" {{ old('role') == 'customer' ? 'selected' : '' }}>Pelanggan</option>
+                    <option value="kurir" {{ old('role') == 'kurir' ? 'selected' : '' }}>Kurir</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" id="password" 
                     class="form-control @error('password') is-invalid @enderror" 
@@ -91,7 +101,7 @@
                 @enderror
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
                 <input type="password" name="password_confirmation" id="password_confirmation" 
                     class="form-control @error('password_confirmation') is-invalid @enderror" 

@@ -37,4 +37,10 @@
     <link rel="stylesheet" href="{{ asset('sistem/assets/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('sistem/assets/css/plugins.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('sistem/assets/css/kaiadmin.min.css')}}" />
+
+    <style>
+      tr.dt th {
+          background-color: aqua;
+        }
+    </style>
   </head>
