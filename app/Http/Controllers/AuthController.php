@@ -17,7 +17,9 @@ class AuthController extends Controller implements HasMiddleware
 {
     public static function middleware()
     {
-        return [ new Middleware('guest')->except('logout')];
+        return [
+            (new Middleware('guest'))->except('logout'),
+        ];
     }
     public function login(){
         return view('landing.konten.login');
@@ -56,8 +58,8 @@ class AuthController extends Controller implements HasMiddleware
     }else{
         $status = 'belum aktif';
     }
-    
-        
+
+
     DB::beginTransaction();
     try {
         $user = User::create([
